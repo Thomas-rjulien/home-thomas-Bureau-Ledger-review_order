@@ -9,7 +9,7 @@ def sort_crypto_assets(filepath)
   unranked_array = []
 
   crypto_assets_array.each do |crypto_asset|
-    crypto_asset['rank'].nil? ? unranked_array << crypto_asset : ranked_array << crypto_asset
+    crypto_asset['rank'] ? unranked_array << crypto_asset : ranked_array << crypto_asset
   end
 
   ranked_array.sort_by! { |crypto_asset| crypto_asset['rank'].to_i }
