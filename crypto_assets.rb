@@ -9,15 +9,13 @@ def sort_crypto_assets(filepath)
   unranked_array = []
 
   crypto_assets_array.each do |crypto_asset|
-    crypto_asset['rank'] ? unranked_array << crypto_asset : ranked_array << crypto_asset
+    crypto_asset['rank'] ? ranked_array << crypto_asset : unranked_array << crypto_asset
   end
-
   ranked_array.sort_by! { |crypto_asset| crypto_asset['rank'].to_i }
+  ranked_array << unranked_array
+
   File.open('ranked.json', 'wb') do |file|
     file.write(JSON.pretty_generate(ranked_array))
-  end
-  File.open('unranked.json', 'wb') do |file|
-    file.write(JSON.pretty_generate(unranked_array))
   end
 end
 
