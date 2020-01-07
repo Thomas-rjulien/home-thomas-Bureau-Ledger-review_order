@@ -15,7 +15,7 @@ def sort_crypto_assets(filepath)
   ranked_array << unranked_array
 
   File.open('ranked.json', 'wb') do |file|
-    file.write(JSON.pretty_generate(ranked_array))
+    file.write(JSON.pretty_generate(ranked_array.flatten))
   end
 end
 
